@@ -51,10 +51,10 @@ export default class PlantList extends Component {
    handleSubmit = e => {
      e.preventDefault();
      console.log("submit");
-     this.setState({activeFilter: this.state.filterField});
+     this.setState({activeFilter: this.state.filterField}, () => {this.filterPlants()});
     //  console.log("Active filter", this.state.activeFilter);
-    //Bug here because it filters before it finishes setState. Not sure how to fix.
-    this.filterPlants();
+    //Bug here because it filters before it finishes setState. Not sure how to fix. Attempted to make it a callback
+    
    }
    handleChange = e => {
     console.log("change");
