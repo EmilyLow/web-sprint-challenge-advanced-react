@@ -40,7 +40,7 @@ export default class PlantList extends Component {
         console.log("filtering");
         let filteredPlants = this.state.plants.filter((plant) => {
 
-          return plant.name.includes(this.state.activeFilter);
+          return plant.name.toLowerCase().includes(this.state.activeFilter.toLowerCase());
         }
         );
         this.setState({plants: filteredPlants})
