@@ -32,9 +32,10 @@ export default class PlantList extends Component {
     }
 
     filterPlants() {
-      // console.log("Updated");
+      console.log("FilterPlants, filter", this.state.activeFilter);
+      this.setState({plants: this.state.rawPlants});
       if(this.state.activeFilter != "") {
-        this.setState({plants: this.state.rawPlants});
+        
         console.log("filtering");
         let filteredPlants = this.state.plants.filter((plant) => {
 
@@ -52,6 +53,7 @@ export default class PlantList extends Component {
      console.log("submit");
      this.setState({activeFilter: this.state.filterField});
     //  console.log("Active filter", this.state.activeFilter);
+    //Bug here because it filters before it finishes setState. Not sure how to fix.
     this.filterPlants();
    }
    handleChange = e => {
