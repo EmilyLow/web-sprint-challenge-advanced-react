@@ -31,9 +31,10 @@ export default class PlantList extends Component {
       
     }
 
+    //Currently, you have to filter nothing to reset before you can filter something else. Is there a way to fix that? For example being able to filter "ZZ" after filtering for "String"
     filterPlants() {
       console.log("FilterPlants, filter", this.state.activeFilter);
-      this.setState({plants: this.state.rawPlants});
+     
       if(this.state.activeFilter != "") {
         
         console.log("filtering");
@@ -51,9 +52,9 @@ export default class PlantList extends Component {
    handleSubmit = e => {
      e.preventDefault();
      console.log("submit");
-     this.setState({activeFilter: this.state.filterField}, () => {this.filterPlants()});
-    //  console.log("Active filter", this.state.activeFilter);
-    //Bug here because it filters before it finishes setState. Not sure how to fix. Attempted to make it a callback
+     this.setState({activeFilter: this.state.filterField, plants: this.state.rawPlants}, () => {this.filterPlants()});
+   
+    
     
    }
    handleChange = e => {
